@@ -2,6 +2,8 @@
 
 Try it yourself in Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nateraw/stable-diffusion-videos/blob/main/stable_diffusion_videos.ipynb)
 
+[![Replicate](https://replicate.com/nateraw/stable-diffusion-videos/badge)](https://replicate.com/nateraw/stable-diffusion-videos)
+
 TPU version (~x6 faster than standard colab GPUs): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nateraw/stable-diffusion-videos/blob/main/flax_stable_diffusion_videos.ipynb)
 
 **Example** - morphing between "blueberry spaghetti" and "strawberry spaghetti"
@@ -19,14 +21,15 @@ You can either dream up different versions of the same prompt, or morph between 
 The app is built with [Gradio](https://gradio.app/), which allows you to interact with the model in a web app. Here's how I suggest you use it:
 
 1. Use the "Images" tab to generate images you like.
-    - Find two images you want to morph between
-    - These images should use the same settings (guidance scale, scheduler, height, width)
-    - Keep track of the seeds/settings you used so you can reproduce them
+
+   - Find two images you want to morph between
+   - These images should use the same settings (guidance scale, scheduler, height, width)
+   - Keep track of the seeds/settings you used so you can reproduce them
 
 2. Generate videos using the "Videos" tab
-    - Using the images you found from the step above, provide the prompts/seeds you recorded
-    - Set the `num_interpolation_steps` - for testing you can use a small number like 3 or 5, but to get great results you'll want to use something larger (60-200 steps). 
-    - You can set the `output_dir` to the directory you wish to save to
+   - Using the images you found from the step above, provide the prompts/seeds you recorded
+   - Set the `num_interpolation_steps` - for testing you can use a small number like 3 or 5, but to get great results you'll want to use something larger (60-200 steps).
+   - You can set the `output_dir` to the directory you wish to save to
 
 ## Python Package
 
@@ -45,7 +48,8 @@ huggingface-cli login
 ```
 
 ### Making Videos
-Note: For Apple M1 architecture, use ```torch.float32``` instead, as ```torch.float16``` is not available on MPS.
+
+Note: For Apple M1 architecture, use `torch.float32` instead, as `torch.float16` is not available on MPS.
 
 ```python
 from stable_diffusion_videos import StableDiffusionWalkPipeline
@@ -72,7 +76,7 @@ video_path = pipeline.walk(
 
 ### Making Music Videos
 
-*New!* Music can be added to the video by providing a path to an audio file. The audio will inform the rate of interpolation so the videos move to the beat 🎶
+_New!_ Music can be added to the video by providing a path to an audio file. The audio will inform the rate of interpolation so the videos move to the beat 🎶
 
 ```python
 from stable_diffusion_videos import StableDiffusionWalkPipeline
@@ -125,8 +129,7 @@ interface.launch()
 
 ## Credits
 
-This work built off of [a script](https://gist.github.com/karpathy/00103b0037c5aaea32fe1da1af553355
-) shared by [@karpathy](https://github.com/karpathy). The script was modified to [this gist](https://gist.github.com/nateraw/c989468b74c616ebbc6474aa8cdd9e53), which was then updated/modified to this repo. 
+This work built off of [a script](https://gist.github.com/karpathy/00103b0037c5aaea32fe1da1af553355) shared by [@karpathy](https://github.com/karpathy). The script was modified to [this gist](https://gist.github.com/nateraw/c989468b74c616ebbc6474aa8cdd9e53), which was then updated/modified to this repo.
 
 ## Contributing
 
@@ -140,7 +143,7 @@ Enjoy 🤗
 
 You can also 4x upsample your images with [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)!
 
-It's included when you pip install the latest version of `stable-diffusion-videos`! 
+It's included when you pip install the latest version of `stable-diffusion-videos`!
 
 You'll be able to use `upsample=True` in the `walk` function, like this:
 
@@ -167,5 +170,3 @@ from stable_diffusion_videos import RealESRGANModel
 model = RealESRGANModel.from_pretrained('nateraw/real-esrgan')
 model.upsample_imagefolder('path/to/images/', 'path/to/output_dir')
 ```
-
-

@@ -134,3 +134,7 @@ images
 run.py
 test_outputs
 examples/music
+test
+*.deb
+*.pin.1
+*.h5
