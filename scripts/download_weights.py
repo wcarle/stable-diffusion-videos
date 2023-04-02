@@ -12,8 +12,8 @@ sys.path.append('.')
 
 from predict import MODEL_CACHE, MODEL_ID, MODEL_VAE
 
-# if os.path.exists(MODEL_CACHE):
-#     shutil.rmtree(MODEL_CACHE)
+if os.path.exists(MODEL_CACHE):
+    shutil.rmtree(MODEL_CACHE)
 os.makedirs(MODEL_CACHE, exist_ok=True)
 
 vae = AutoencoderKL.from_pretrained(
@@ -25,5 +25,4 @@ pipe = StableDiffusionPipeline.from_pretrained(
     MODEL_ID,
     vae=vae,
     cache_dir=MODEL_CACHE,
-    revision="fp16",
 )
