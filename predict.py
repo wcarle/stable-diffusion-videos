@@ -8,7 +8,7 @@ from diffusers.schedulers import LMSDiscreteScheduler
 
 from stable_diffusion_videos import StableDiffusionWalkPipeline
 
-MODEL_ID = "runwayml/stable-diffusion-v1-5"
+MODEL_ID = "nitrosocke/mo-di-diffusion"
 MODEL_VAE = "stabilityai/sd-vae-ft-ema"
 MODEL_CACHE = "diffusers-cache"
 
@@ -24,7 +24,6 @@ class Predictor(BasePredictor):
             MODEL_ID,
             vae=vae,
             torch_dtype=torch.float16,
-            revision="fp16",
             safety_checker=None,
             cache_dir=MODEL_CACHE,
             local_files_only=True,

@@ -25,5 +25,4 @@ pipe = StableDiffusionPipeline.from_pretrained(
     MODEL_ID,
     vae=vae,
     cache_dir=MODEL_CACHE,
-    revision="fp16",
 )
